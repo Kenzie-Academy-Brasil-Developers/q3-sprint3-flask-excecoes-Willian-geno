@@ -22,7 +22,7 @@ def get_user():
 
 @app.post("/user")
 def post_user():
-    excted_keys = {"name", "email"}
+    excted_keys = {"nome", "email"}
     data = request.get_json()
 
     try: 
@@ -31,7 +31,7 @@ def post_user():
         return e.args[0], HTTPStatus.BAD_REQUEST 
     
     if not verification_value(data):
-        return {"msg":"Value Invalido"}, HTTPStatus.BAD_REQUEST
+        return {"msg":"Valres invalido, Todos os valores passados devem ser do tipo 'stg'"}, HTTPStatus.BAD_REQUEST
         
     if not verification_email(data):
         return {"msg":"Email já cadastrado"}, HTTPStatus.CONFLICT

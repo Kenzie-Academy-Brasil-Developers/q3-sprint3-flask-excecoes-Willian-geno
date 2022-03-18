@@ -33,14 +33,14 @@ def formar_data(data:dict):
     id = ''
     with open(f'{DIR_DATABASE}/database.json', "r") as json_database:
         id = len(json.load(json_database)["data"]) + 1
-    name = data["name"].split(" ")
+    name = data["nome"].split(" ")
     new_name = []
     for item in name:
         new_name.append(item.title())
     new_name = " ".join(new_name)
     new_email = data["email"].lower()
 
-    return {'name':new_name, 'email':new_email, 'id':id}
+    return {'nome':new_name, 'email':new_email, 'id':id}
 
 
 def upload_data(data):
@@ -61,7 +61,7 @@ def verification_email(data):
     return result
 
 def verification_value(data):
-    if type(data["name"]) != str:
+    if type(data["nome"]) != str:
         return False
     if type(data["email"]) != str:
         return False
